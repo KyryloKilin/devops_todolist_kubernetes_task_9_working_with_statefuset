@@ -5,3 +5,15 @@ metadata:
   namespace: todoapp
 data:
   PYTHONUNBUFFERED: "1"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-init-config
+  namespace: mysql
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS todoapp;
+    CREATE USER IF NOT EXISTS 'todo_user'@'%' IDENTIFIED BY 'todo_password';
+    GRANT ALL PRIVILEGES ON todoapp.* TO 'todo_user'@'%';
+    FLUSH PRIVILEGES;
