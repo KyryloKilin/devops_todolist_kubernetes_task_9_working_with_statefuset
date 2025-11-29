@@ -19,21 +19,21 @@ kind create cluster --name todoapp --config cluster.yml
 # Apply Kubernetes manifests
 # Apply all manifests in the following order:
 # 1. Namespaces
-kubectl apply -f _infrastructure/namespace.yml
+kubectl apply -f .infrastructure/namespace.yml
 
 # 2. ConfigMaps and Secrets
-kubectl apply -f _infrastructure/configMap.yml
-kubectl apply -f _infrastructure/secret.yml
+kubectl apply -f .infrastructure/configMap.yml
+kubectl apply -f .infrastructure/secret.yml
 
 # 3. MySQL StatefulSet and headless Service
-kubectl apply -f _infrastructure/statefulset.yml
-kubectl apply -f _infrastructure/mysql-service.yml
+kubectl apply -f .infrastructure/statefulset.yml
+kubectl apply -f .infrastructure/mysql-service.yml
 
 # 4. Django Todo app: Deployment, Services and HPA
-kubectl apply -f _infrastructure/deployment.yml
-kubectl apply -f _infrastructure/clusterIp.yml
-kubectl apply -f _infrastructure/nodeport.yml
-kubectl apply -f _infrastructure/hpa.yml
+kubectl apply -f .infrastructure/deployment.yml
+kubectl apply -f .infrastructure/clusterIp.yml
+kubectl apply -f .infrastructure/nodeport.yml
+kubectl apply -f .infrastructure/hpa.yml
 
 
 # What each configuration is doing
@@ -49,7 +49,7 @@ kubectl apply -f _infrastructure/hpa.yml
 # mysql-secret (namespace mysql) stores sensitive MySQL values:
 # MYSQL_ROOT_PASSWORD, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE.
 # app-db-secret (namespace todoapp) stores application DB connection data:
-# NAME, USERNAME, PASSWORD, HOST.
+# NAME, USER, PASSWORD, HOST.
 # app-config ConfigMap (namespace todoapp) provides the PYTHONUNBUFFERED setting.
 # mysql-init-config ConfigMap (namespace mysql) provides init.sql that:
 # creates the todoapp database;

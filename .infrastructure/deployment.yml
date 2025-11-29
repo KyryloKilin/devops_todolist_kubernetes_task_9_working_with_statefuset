@@ -43,7 +43,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: app-db-secret
-                  key: USERNAME
+                  key: USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
